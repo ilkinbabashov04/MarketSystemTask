@@ -1,9 +1,11 @@
 ﻿using Task2MarketSystem;
 
 UserManager userManager = new UserManager();
-MyMethod(userManager);
+CategoryManager categoryManager = new CategoryManager();
+ProductManager productManager = new ProductManager(categoryManager.GetCategories());
+MyMethod(userManager, productManager, categoryManager);
 
-static void MyMethod(UserManager userManager)
+static void MyMethod(UserManager userManager, ProductManager productManager, CategoryManager categoryManager)
 {
     Console.Write("Enter username: ");
     string setUserName = Console.ReadLine();
@@ -53,7 +55,7 @@ static void MyMethod(UserManager userManager)
                     if (userManager.isAdmin)
                     {
                         Console.Clear();
-                        userManager.AddProduct();
+                        productManager.AddProduct();
                         Console.Clear();
                     }
                     else
@@ -65,7 +67,7 @@ static void MyMethod(UserManager userManager)
                     if (userManager.isAdmin)
                     {
                         Console.Clear();
-                        userManager.AddCategory();
+                        categoryManager.AddCategory();
                         Console.Clear();
                     }
                     else
@@ -74,19 +76,19 @@ static void MyMethod(UserManager userManager)
                     }
                     break;
                 case 5:
-                    userManager.ShowProductList();
+                    productManager.ShowProductList();
                     break;
                 case 6:
-                    userManager.ShowProductsById();
+                    productManager.ShowProductListById();
                     break;
                 case 7:
-                    userManager.ShowCategoryList();
+                    categoryManager.ShowCategoryList();
                     break;
                 case 8:
                     if (userManager.isAdmin)
                     {
                         Console.Clear();
-                        userManager.DeleteProduct();
+                        productManager.DeleteProduct();
                         Console.Clear();
                     }
                     else
@@ -95,16 +97,16 @@ static void MyMethod(UserManager userManager)
                     }
                     break;
                 case 9:
-                    userManager.SellProduct();
+                    productManager.SellProduct();
                     break;
                 case 10:
-                    userManager.ShowSelledProduct();
+                    productManager.ShowSelledProduct();
                     break;
                 case 11:
                     if (userManager.isAdmin)
                     {
                         Console.Clear();
-                        userManager.ReturnSelledProduct();
+                        productManager.ReturnSelledProduct();
                         Console.Clear();
                     }
                     else
@@ -120,7 +122,7 @@ static void MyMethod(UserManager userManager)
         while (option != 0);
         {
             Console.Clear();
-            MyMethod(userManager);
+            MyMethod(userManager, productManager, categoryManager);
         }
     }
     else
@@ -128,6 +130,6 @@ static void MyMethod(UserManager userManager)
         Console.WriteLine("Press Enter to return to the menu...");
         Console.ReadLine();
         Console.Clear();
-        MyMethod(userManager);
+        MyMethod(userManager, productManager, categoryManager);
     }
 }
