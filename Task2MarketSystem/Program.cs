@@ -1,4 +1,5 @@
-﻿using Task2MarketSystem;
+﻿using System.Globalization;
+using Task2MarketSystem;
 
 UserManager userManager = new UserManager();
 CategoryManager categoryManager = new CategoryManager();
@@ -113,6 +114,23 @@ static void MyMethod(UserManager userManager, ProductManager productManager, Cat
                     {
                         Console.WriteLine("This button is not for seller");
                     } break;
+                 case 12:
+                     if(userManager.isAdmin)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Enter product id to update: ");
+                        int productId = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter new product name: ");
+                        string newName = Console.ReadLine();
+                        Console.WriteLine("Enter new categoryId: ");
+                        int newCategoryId = int.Parse(Console.ReadLine());
+                        productManager.UpdateProduct(productId, newName, newCategoryId);
+                    }
+                    else
+                    {
+                        Console.WriteLine("This button is not for seller");
+                    }
+                     break;
                 default:
                     Console.WriteLine("Invalid option. Try again.");
                     break;

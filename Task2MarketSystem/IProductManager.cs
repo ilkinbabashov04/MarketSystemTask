@@ -15,6 +15,7 @@ namespace Task2MarketSystem
         void SellProduct();
         void ShowSelledProduct();
         void ReturnSelledProduct();
+        void UpdateProduct(int productId, string newname, int newCategoryId);
 
     }
 }

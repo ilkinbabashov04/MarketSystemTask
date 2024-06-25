@@ -148,5 +148,31 @@ namespace Task2MarketSystem
             Console.ReadLine();
             Console.Clear();
         }
+
+        public void UpdateProduct(int productId, string newname, int newCategoryId)
+        {
+            Product product = products.Find(x=>x.Id == productId);
+            if (product != null)
+            {
+                Category category = categories.Find(y => y.CategoryId == newCategoryId);
+                if (category != null)
+                {
+                    product.ProductName = newname;
+                    product.CategoryId = newCategoryId;
+                    Console.WriteLine("Product updated successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Category not found with this Id");
+                }
+
+            }
+            else 
+            { 
+                Console.WriteLine("Product not found with this Id"); 
+            }
+            Console.ReadLine();
+            Console.Clear();
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Task2MarketSystem
                 Console.WriteLine("3. Produkt elave et");
                 Console.WriteLine("4. Kateqoriya elave et");
                 Console.WriteLine("11. Satilmish produktu geri qaytar");
+                Console.WriteLine("12. Produktu yenile");
             }
             Console.WriteLine("5. Produkt listini goster");
             Console.WriteLine("6. Kateqoriya Id-ne gore produktlari goster");
